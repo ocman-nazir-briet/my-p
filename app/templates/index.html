@@ -33,6 +33,15 @@
             <button type='submit'>Add Blog</button>
         </form>
     </div>
+
+    <div>
+        <h3>Add School</h3>
+        <form action='/school' method='POST'>
+            {% csrf_token %}
+            {{form2}}
+            <button type='submit'>Add School</button>
+        </form>
+    </div>
     
     <div>
         <h3>List of Authors:</h3>
