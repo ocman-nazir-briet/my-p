@@ -8,11 +8,21 @@
 </head>
 <body>
     <div>
+        <h3>Add Author</h3>
+        <form action='/' method='POST'>
+            {% csrf_token %}
+            {{form}}
+            <button type='submit'>Add Author</button>
+        </form>
+    </div>
+    
+    <div>
         <h3>List of Authors:</h3>
         {% for auth in authors%}
         <ul>
             <li><h4>{{auth.author}}</h4></li>
             <li><h4>{{auth.author.email}}</h4></li>
+            <li><h4>{{auth.author.password}}</h4></li>
             <li>{{auth.fname}}</li>
             <li>{{auth.lname}}</li>
             <li>{{auth.email}}</li>
@@ -23,13 +33,6 @@
         <hr>
         {% endfor %}
     </div>
-    <div>
-        <h3>Add Author</h3>
-        <form action='/' method='POST'>
-            {% csrf_token %}
-            {{form}}
-            <button type='submit'>Add Author</button>
-        </form>
-    </div>
+    
 </body>
 </html>
