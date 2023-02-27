@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <div>
+        <h3>List of Authors:</h3>
+        {% for auth in authors%}
+        <ul>
+            <li><h4>{{auth.author}}</h4></li>
+            <li><h4>{{auth.author.email}}</h4></li>
+            <li>{{auth.fname}}</li>
+            <li>{{auth.lname}}</li>
+            <li>{{auth.email}}</li>
+            <li><h5>{{auth.fullName}}</h5></li>
+            <li><h5>{{auth.fullNameRev}}</h5></li>
+            <li><h5>{{auth.fullNameReverse}}</h5></li>
+        </ul>
+        <hr>
+        {% endfor %}
+    </div>
+    <div>
+        <h3>Add Author</h3>
+        <form action='/' method='POST'>
+            {% csrf_token %}
+            {{form}}
+            <button type='submit'>Add Author</button>
+        </form>
+    </div>
+</body>
+</html>
