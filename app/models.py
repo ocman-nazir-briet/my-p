@@ -49,3 +49,21 @@ class Blog(models.Model):
     class Meta:
         ordering = ['-id']
         verbose_name_plural = 'Blogs'
+
+class School(models.Model):
+    blog = models.ManyToManyField(Blog)
+    name = models.CharField(max_length=255)
+    address = models.TextField()
+    phone = models.CharField(max_length=32)
+    created = models.DateTimeField(blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.created is None:
+            self.created = timezone.now()
+        return super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Schools'
