@@ -8,7 +8,7 @@ class Author(models.Model):
     author = models.OneToOneField(User, on_delete=models.CASCADE)
     fname = models.CharField(max_length=255, null=True)
     lname = models.CharField(max_length=255, null=True)
-    email = models.EmailField(max_length=32)
+    email = models.EmailField(max_length=32, unique=True)
     created = models.DateTimeField(blank=True)
     
     def save(self, *args, **kwargs):
@@ -54,7 +54,7 @@ class School(models.Model):
     blog = models.ManyToManyField(Blog)
     name = models.CharField(max_length=255)
     address = models.TextField()
-    phone = models.CharField(max_length=32)
+    phone = models.CharField(max_length=32,help_text='must contain 11 digits')
     created = models.DateTimeField(blank=True)
 
     def save(self, *args, **kwargs):
@@ -67,3 +67,15 @@ class School(models.Model):
     class Meta:
         ordering = ['name']
         verbose_name_plural = 'Schools'
+
+class TesttAbstract(models.Model):
+    des = models.TextField()
+
+    class Meta:
+        abstract = True
+
+class Testt(TesttAbstract):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
