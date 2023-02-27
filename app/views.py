@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.contrib import messages
 
 
 def index(request):
@@ -13,6 +14,8 @@ def index(request):
         if form.is_valid():
             form.save()
             return redirect('/')
+        else:
+            messages.error(request, 'Something Went Wrong')
     return render(request, 'index.html', {'authors':authors, 'form':form, 'form1':form1})
 
 def blog(request):
@@ -22,6 +25,6 @@ def blog(request):
             form1.save()
             return redirect('/')
         else:
-            form1.errors()
+            messages.error(request, 'Something Went Wrong')
 
     return redirect('/')
