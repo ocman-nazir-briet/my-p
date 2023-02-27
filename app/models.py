@@ -31,3 +31,21 @@ class Author(models.Model):
     class Meta:
         ordering = ['-id']
         verbose_name_plural = 'List of Authors'
+
+
+class Blog(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    des = models.TextField()
+    created = models.DateTimeField(blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.created is None:
+            self.created = timezone.now()
+        return super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.title
+    class Meta:
+        ordering = ['-id']
+        verbose_name_plural = 'Blogs'
