@@ -68,7 +68,13 @@ class School(models.Model):
         ordering = ['name']
         verbose_name_plural = 'Schools'
 
-class Testt(models.Model):
+class TesttAbstract(models.Model):
+    des = models.TextField()
+
+    class Meta:
+        abstract = True
+
+class Testt(TesttAbstract):
     name = models.CharField(max_length=100)
 
     def __str__(self):

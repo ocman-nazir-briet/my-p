@@ -17,7 +17,7 @@
     <div>
     </div>
     <div>
-        <h3>Add Author</h3>
+        <h3>Add Author<span> - {{authorsCount}}</span></h3>
         <form action='/' method='POST'>
             {% csrf_token %}
             {{form}}
@@ -49,6 +49,9 @@
             {% csrf_token %}
             <label>Enter Name: </label>
             <input name='name'>
+            {% csrf_token %}
+            <label>Enter Description: </label>
+            <input name='des'>
             <button type='submit'>Add Test</button>
         </form>
     </div>
