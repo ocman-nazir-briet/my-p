@@ -44,6 +44,16 @@
     </div>
     
     <div>
+        <h3>Add Test</h3>
+        <form action='/t' method='POST'>
+            {% csrf_token %}
+            <label>Enter Name: </label>
+            <input name='name'>
+            <button type='submit'>Add Test</button>
+        </form>
+    </div>
+
+    <div>
         <h3>List of Authors:</h3>
         {% for auth in authors%}
         <ul>

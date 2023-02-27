@@ -43,3 +43,10 @@ def school(request):
             messages.error(request, 'Something Went Wrong')
 
     return redirect('/')
+
+def tes(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        Testt.objects.create(name = name)
+        return redirect('/')
+
