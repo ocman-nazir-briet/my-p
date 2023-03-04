@@ -5,7 +5,7 @@ from django.utils import timezone
 
 class Author(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
-    author = models.OneToOneField(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     fname = models.CharField(max_length=255, null=True)
     lname = models.CharField(max_length=255, null=True)
     email = models.EmailField(max_length=32, unique=True)
@@ -18,12 +18,11 @@ class Author(models.Model):
 
     @property
     def fullName(self, *args, **kwargs):
-        return str(self.fname + self.lname)
+        return str(self.fname + ' ' + self.lname)
     
     def fullNameRev(self, *args, **kwargs):
-        return str(self.lname + self.fname)
+        return str(self.lname + ' ' + self.fname)
     
-    fullNameReverse = fullNameRev
 
     def __str__(self):
         return self.fname

@@ -21,7 +21,7 @@ def index(request):
             form.save()
             return redirect('/')
         else:
-            messages.error(request, 'Something Went Wrong')
+            messages.error(request, 'Something Went Wrong, Form not Submitted')
     return render(request, 'index.html', {'authors':authors, 'authorsCount':authorsCount,'form':form, 'form1':form1, 'form2':form2})
 
 def blog(request):
@@ -31,7 +31,7 @@ def blog(request):
             form.save()
             return redirect('/')
         else:
-            messages.error(request, 'Something Went Wrong')
+            messages.error(request, 'Something Went Wrong, Form not Submitted')
 
     return redirect('/')
 
@@ -43,7 +43,7 @@ def school(request):
             form.save()
             return redirect('/')
         else:
-            messages.error(request, 'Something Went Wrong')
+            messages.error(request, 'Something Went Wrong, Form not Submitted')
 
     return redirect('/')
 
